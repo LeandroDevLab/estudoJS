@@ -1,0 +1,20 @@
+.item {
+  padding: 10px;
+  border: 1px solid #000;
+  width: 300px;
+}
+.container {
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.div_content {
+  padding: 20px;
+  border: 2px solid green;
+  width: auto;
+  height: 100px;
+}
+
+.item.over {
+  background-color: lightblue; /* azul quando está sendo sobrevoado */
+}

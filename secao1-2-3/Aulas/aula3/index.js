@@ -1,0 +1,1 @@
+console.log('leandro'); /* método de chamada */

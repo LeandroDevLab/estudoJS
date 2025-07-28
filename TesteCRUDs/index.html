@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CRUD Avançado</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <h1>CRUD de Usuários</h1>
+
+    <!-- Formulário de cadastro -->
+    <form id="user-form">
+      <input type="text" id="name" placeholder="Nome" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <button type="submit">Salvar</button>
+    </form>
+
+    <!-- Campo de busca -->
+    <input type="text" id="search" placeholder="Buscar usuário..." />
+
+    <!-- Lista de usuários -->
+    <ul id="user-list"></ul>
+
+    <!-- Botão de limpar tudo -->
+    <button id="clear-all">Limpar Todos os Usuários</button>
+
+    <script src="./src/js/script.js"></script>
+  </body>
+</html>

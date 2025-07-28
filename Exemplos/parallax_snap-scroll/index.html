@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio com Parallax + Scroll Snap</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    html, body {
+      font-family: 'Arial', sans-serif;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      height: 100%;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      padding: 1rem;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00ffc3;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 3rem;
+      position: relative;
+      text-align: center;
+      scroll-snap-align: start;
+    }
+
+    .parallax-bg {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+    }
+
+    #home {
+      background-image: url('https://picsum.photos/id/1015/1920/1080');
+    }
+
+    #sobre {
+      background-image: url('https://picsum.photos/id/1005/1920/1080');
+    }
+
+    #projetos {
+      background-color: #111;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    #contato {
+      background-image: url('https://picsum.photos/id/1016/1920/1080');
+    }
+
+    /* Projetos Cards */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      width: 80%;
+    }
+
+    .card {
+      width: 300px;
+      height: 200px;
+      background-color: #222;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .parallax-item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: 0.05;
+      font-size: 10rem;
+      user-select: none;
+    }
+
+    /* Contato */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 300px;
+    }
+
+    input, textarea {
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 0.5rem;
+      background-color: #00ffc3;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.8s;
+    }
+
+    button:hover {
+      background-color: #00cfa0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#sobre">Sobre Mim</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- Seções -->
+  <section id="home" class="parallax-bg">
+    Bem-vindo(a)
+  </section>
+
+  <section id="sobre" class="parallax-bg">
+    <div>
+      <p>Sobre Mim</p>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <p>Meus Projetos</p>
+    <div class="cards">
+      <div class="card">
+        Projeto 1
+        <div class="parallax-item">🎨</div>
+      </div>
+      <div class="card">
+        Projeto 2
+        <div class="parallax-item">💻</div>
+      </div>
+      <div class="card">
+        Projeto 3
+        <div class="parallax-item">📱</div>
+      </div>
+      <div class="card">
+        Projeto 4
+        <div class="parallax-item">🚀</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="parallax-bg">
+    <div>
+      <p>Contato</p>
+      <form>
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="Email" required>
+        <textarea rows="4" placeholder="Mensagem" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+  <script src="./scr/js/scrollSuave.js"></script>
+</body>
+</html>

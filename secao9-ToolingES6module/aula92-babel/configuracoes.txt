@@ -1,0 +1,16 @@
+raramente é usado no dia a dia assim - usando o webpack
+
+//criou arquivo package.json
+npm init -y 
+
+//não funcionou
+npm install --save-dev @babel/cli @babel/preset-env @babel/core
+
+//converter para mais antigo
+npx babel main.js -o bundle.js --presets=@babel/env
+
+//No arquivo package.json inserir esse linha de comando no scripts
+"babel": "babel ./main.js -o ./bundle.js --presets=@babel/env -w"
+
+//depois no terminal
+npm run babel

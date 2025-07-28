@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 10px;
+  background: #f4f4f4;
+  border-radius: 8px;
+}
+
+form,
+#search {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input,
+button {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1976d2;
+}
+
+li {
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+li button {
+  margin-left: 10px;
+}
+
+.edit {
+  background: #ff9800;
+}
+
+.delete {
+  background: #f44336;
+}
+
+#clear-all {
+  margin-top: 20px;
+  background: #9e9e9e;
+}

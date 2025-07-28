@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar PDF da Página</title>
+
+    <!-- Importa a biblioteca html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <!-- Importando o style da pasta css -->
+     <link rel="stylesheet" href="./src/css/style.css">
+</head>
+<body>
+
+    <button id="gerarPDF">Gerar PDF da Página</button>
+
+    <div id="conteudo">
+        <div id="logoGran">
+            <img src="./img/logoGranFaculdade.svg" alt="">
+        </div>
+        <h1>Projeto Integrador</h1>
+        <h2>Fase 2 - Experiência compartilhada</h2>
+        <p>
+            Trata-se de uma conversa franca com um profissional da área de TI (José Gabriel da Silva Lima) 
+            sobre suas experiências, formação, rotina, desafios profissionais. Sua opinião sobre as principais 
+            tecnologias e habilidades necessárias para o desenvolvimento profissional, conselhos para iniciantes, 
+            projetos, cultura e colaborações. 
+        </p>
+        <div class="videos">
+            <div class="videoYT">
+                <h2>Entrevista com um Profissional da área de TI</h2>
+                <h3>Parte 1 - Rotinas, tecnologias e habilidades necessárias</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/2us0EENKyvU?si=4hHvFkTE2JB23H_M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="videoYT">
+                <h2>Parte 2 - Conselhos para iniciantes</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/dtzARjpQ0XM?si=-b0z-O0iPFX7M9Gn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="videoYT">
+                <h2>Parte 3 - Desafios futuros e Tendências</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/UMFvznWj61U?si=Sf214LzuAQ1_8OhD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <h4>
+                OBS: os direito de audio e imagem foram confirmados verbalmente pelo entrevistado.
+            </h4>
+        </div>
+
+        <h2>Dados Importantes:</h2>
+        <ul>
+            <li>Data da entrevista: 01/05/2025</li>
+            <li>Responsável: Leandro Sávio Oliota Ribeiro (Aluno de 1º Período de Bacharelado em Ciência da Computação)</li>
+            <li>Entrevistado: José Gabriel da Silva Lima</li>
+            <li>OBS: os direito de audio e imagem foram confirmados verbalmente pelo entrevistado.</li>
+        </ul>
+
+        <p>Obrigado por utilizar nosso sistema!</p>
+    </div>
+
+    <script src="./src/js/main.js" defer></script>
+</body>
+</html>

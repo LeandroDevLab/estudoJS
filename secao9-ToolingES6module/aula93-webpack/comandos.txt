@@ -1,0 +1,15 @@
+//inicializar
+npm init -y
+
+//instalando um monte de coisa (tudo em uma linha só)
+npm i --save-dev @babel/core @babel/preset-env @babel/cli babel-loader webpack webpack-cli regenerator-runtime core-js@2
+
+//resolvendo
+npm install --legacy-peer-deps
+
+
+Pode começar daqui
+npm init -y
+
+//sequencia
+npm install --save-dev @babel/core@7.27.4 @babel/preset-env @babel/cli@7.27.2 babel-loader webpack webpack-cli regenerator-runtime core-js@3
