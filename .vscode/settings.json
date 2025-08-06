@@ -32,6 +32,13 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // ✨ ADICIONE ESTA LINHA PARA NÃO COMPLETAR O </body> ✨
+    "editor.formatOnSave": false
+  },
+
+  // Garante que arquivos .ejs sejam tratados como HTML para coloração
+  "files.associations": {
+    "*.ejs": "html"
   }
 }
