@@ -1,0 +1,41 @@
+<!-- EJS = HTML com super poderes -->
+<%- include('includes/head')%> 
+<!-- com includes vc deixa o que for padrão pra tudo e altera somente
+ o conteúdo interno -->
+
+<section class="container">
+  <h1>
+    <!-- tags no ejs -->
+    <% if(typeof titulo !== 'undefined') { %> <%= titulo%> <% } else { %> <%= %>
+    O título não foi enviado! <% } %> <%= titulo %>
+    <!-- mais seguro para usar(exibe exatamente o que escrever), exceto se tiver código html(=) dentro -->
+    <br />
+  </h1>
+  <h1>
+    Com forEach: <% numeros.forEach(num => { %> <%= num %> <% }); %>
+    <br />
+    com for clássico: <% for (let i = 0; i <= numeros.length; i++) { %>
+    <%=numeros[i]%> <% }; %>
+    <br />
+    com for in: <% for (indice in numeros) { %> <%= numeros[indice]%> <% };%>
+    <br />
+    com for of: <% for (valueNumero of numeros) { %> <%= valueNumero%> <% };%>
+  </h1>
+  
+  <h3>
+    Buscando do middleware: <%= umaVariavelLocal%>
+  </h3>
+
+  <p>Aproveitando para revisar</p>
+  <p>Token diferente a cada atualização: <%= csrfToken %> </p>
+
+  <form action="/" method="post">
+    <!-- todo e qualquer formulário colocar isso com csurf 💥 -->
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Cliente</label>
+    <input type="text" name="cliente" />
+    <button>Submit</button>
+  </form>
+</section>
+
+<%- include('includes/footer')%>
