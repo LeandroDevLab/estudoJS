@@ -1,7 +1,7 @@
 exports.middlewareGlobal = (req, res, next) => {
   //injetando dados para todas as rotas com middlewareGlobal
-  res.locals.umaVariavelLocal = 'Este é o valor da variável local.'; // posso criar um
-  // res.locals para um controller específico tbm
+  res.locals.errors = req.flash('errors'); // capturando os errors
+  res.locals.success = req.flash('success'); // capturando os errors
   next();
 };
 
