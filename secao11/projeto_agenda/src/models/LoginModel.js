@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-//Instalar pacote de validação (npm i validator) e importar
-const validator = require('validator');
+const validator = require('validator'); //Instalar pacote de validação (npm i validator) e importar
+const bcryptjs = require('bcryptjs'); // pacote para criptografar informação
 
 //O MongoDB não trata os dados, cabe vc tratar
 //por isso usar o mongoose, para garantir que os dados estejam como queremos
@@ -21,15 +21,31 @@ class Login {
   //precisa ser um método async
   async register() {
     this.valida();
-    if (this.errors.length > 0) return;
+    if (this.errors.length > 0) return; //checar após valida()
 
     try {
-      this.user = await LoginModel.create(this.body); //await pq é async
-      // e só cria depois de todas as validações (validar e cleanUp)
+      await this.userExists();
+    } catch (e) {
+      console.log(e);
+    }
+
+    if (this.errors.length > 0) return; //chega após userExists()
+
+    //Criando passo para Criptografar
+    const salt = bcryptjs.genSaltSync();
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
+
+    try {
+      this.user = await LoginModel.create(this.body); //await pq é async e só cria depois de todas as validações (validar e cleanUp)
     } catch (e) {
       console.log(e); // pode fazer outra coisa no catch,
       // mas o await precisa está dentro de um Try/Catch
     }
+  }
+
+  async userExists() {
+    const user = await LoginModel.findOne({ email: this.body.email });
+    if (user) this.errors.push('Usuário já cadastrado!');
   }
 
   valida() {
