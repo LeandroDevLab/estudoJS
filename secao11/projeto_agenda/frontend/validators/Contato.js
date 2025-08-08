@@ -3,6 +3,7 @@ import validator from 'validator';
 export default class Contato {
   constructor(formClass) {
     this.formContato = document.querySelector('.form-contato');
+    this.inputTelefone = document.getElementById('telefone');
   }
 
   init() {
@@ -10,6 +11,7 @@ export default class Contato {
   }
 
   events() {
+    this.preencheTelefoneFormatado();
     //se não existir o formulário já retorna e para a execução
     if (!this.formContato) return;
     this.formContato.addEventListener('submit', e => {
@@ -19,6 +21,53 @@ export default class Contato {
       this.limpaErros();
 
       this.validate(e);
+    });
+  }
+
+  preencheTelefoneFormatado() {
+    if (!this.inputTelefone) return;
+    this.inputTelefone.addEventListener('input', function (event) {
+      let valor = event.target.value;
+
+      // 1. Remove tudo que não for dígito
+      valor = valor.replace(/\D/g, '');
+
+      // 2. Limita o valor a 11 dígitos para garantir o formato correto
+      valor = valor.substring(0, 11);
+
+      // 3. Aplica a máscara de acordo com o número de dígitos
+      if (valor.length > 2 && valor.length <= 7) {
+        // Ex: (XX)XXXXX
+        valor = `(${valor.substring(0, 2)})${valor.substring(2)}`;
+      } else if (valor.length > 7) {
+        // Ex: (XX)XXXXX-XXXX
+        valor = `(${valor.substring(0, 2)})${valor.substring(
+          2,
+          7
+        )}-${valor.substring(7, 11)}`;
+      }
+
+      // 4. Atualiza o valor do input
+      event.target.value = valor;
+    });
+
+    // Opcional: Adicionar um listener para o evento de 'blur' (quando o campo perde o foco)
+    // para garantir que a formatação está correta caso o usuário copie e cole um valor.
+    this.inputTelefone.addEventListener('blur', function (event) {
+      let valor = event.target.value;
+
+      // Remove tudo que não for dígito
+      valor = valor.replace(/\D/g, '');
+
+      // Se o número de dígitos for 11, aplica a máscara completa
+      if (valor.length === 11) {
+        valor = `(${valor.substring(0, 2)})${valor.substring(
+          2,
+          7
+        )}-${valor.substring(7, 11)}`;
+      }
+
+      event.target.value = valor;
     });
   }
 
