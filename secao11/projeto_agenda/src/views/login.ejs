@@ -6,6 +6,7 @@
         <div class="col-lg-8 my-5">
           <h1 class="text-center">Entre ou crie sua conta</h1>
           <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
+          <p class="text-center">Insira e-mail válido e uma senha entre 3 e 50 caracteres</p>
 
           <!-- Caso exista errors, apresentar na tela -->
           <%- include('includes/messages');%>
@@ -15,7 +16,7 @@
             <div class="col-lg">
               <h4 class="text-center my-5">Faça seu cadastro</h4>
               <p>Se você ainda não tem conta, preencha o formulário abaixo:</p>
-              <form action="/login/register" method="POST">
+              <form class="form-cadastro" action="/login/register" method="POST">
                 <!-- Não esquecer de colocar o csrf input hidden -->
                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="mb-3">
@@ -33,7 +34,7 @@
             <div class="col-lg">
               <h4 class="text-center my-5">Faça seu login</h4>
               <p>Se você já tem uma conta, faça o login abaixo:</p>
-              <form action="/login/login" method="POST">
+              <form class="form-login"  action="/login/login" method="POST">
                 <!-- Não esquecer de colocar o csrf input hidden -->
                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="mb-3">
