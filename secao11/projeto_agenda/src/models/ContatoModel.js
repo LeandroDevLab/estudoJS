@@ -71,10 +71,24 @@ Contato.prototype.edit = async function (id) {
   });
 };
 
+/* 
+Funcionou, mas precisa mudar o exports.delete com new Contato...
+Contato.prototype.delete = async function (id) {
+  if (typeof id !== 'string') return;
+  this.contato = await ContatoModel.findByIdAndDelete(id);
+}; 
+*/
+
 //Métodos estáticos
 Contato.buscaPorId = async function (id) {
   if (typeof id !== 'string') return;
   const contato = await ContatoModel.findById(id);
+  return contato;
+};
+
+Contato.delete = async function (id) {
+  if (typeof id !== 'string') return;
+  const contato = await ContatoModel.findOneAndDelete({ _id: id });
   return contato;
 };
 

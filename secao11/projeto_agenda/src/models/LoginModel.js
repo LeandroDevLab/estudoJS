@@ -55,7 +55,8 @@ class Login {
 
   async userExists() {
     this.user = await LoginModel.findOne({ email: this.body.email });
-    if (user) this.errors.push('Usuário já cadastrado!');
+    //correção aqui, faltava o this
+    if (this.user) this.errors.push('Usuário já cadastrado!');
   }
 
   valida() {
