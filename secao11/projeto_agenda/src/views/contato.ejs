@@ -8,9 +8,13 @@
       <h1 class="text-center">Contato</h1>
       <p class="text-center lead">Crie ou edite seu contato abaixo.</p>
 
+      <!-- Condição para não criar novo contato, caso o contato já exista -->
       <%- include('includes/messages')%>
-
-      <form action="/contato/register" method="POST">
+      <% if(contato._id) { %>
+        <form action="/contato/edit/<%= contato._id %>" method="POST">
+      <% } else { %>
+        <form action="/contato/register" method="POST">
+        <% } %>
                 <!-- Não esquecer de colocar o csrf input hidden -->
                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                 <div class="mb-3">
