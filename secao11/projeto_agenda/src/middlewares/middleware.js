@@ -2,6 +2,7 @@ exports.middlewareGlobal = (req, res, next) => {
   //injetando dados para todas as rotas com middlewareGlobal
   res.locals.errors = req.flash('errors'); // capturando os errors
   res.locals.success = req.flash('success'); // capturando os errors
+  res.locals.user = req.session.user;
   next();
 };
 
