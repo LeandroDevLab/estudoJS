@@ -6,6 +6,7 @@ const inputCarbo = document.getElementById('carboidrato');
 const inputProtein = document.getElementById('proteina');
 const inputGordura = document.getElementById('gordura');
 const botao = document.querySelector('.botao');
+const divLista = document.querySelector('.lista');
 
 function addItem() {
   let kcal = inputKcal.value;
@@ -22,7 +23,22 @@ function addItem() {
   console.log(item);
 }
 
+function preencheDivLista() {
+  for (item of lista) {
+    let div = document.createElement('div');
+    div.innerHTML = `<p>
+      Kcal: ${item.kcal} 
+      Carbo: ${item.carbo} 
+      Proteina: ${item.proteina} 
+      Gordura: ${item.gordura} 
+      </p>`;
+    divLista.appendChild(div);
+  }
+}
+
 botao.addEventListener('click', () => {
   addItem();
+  preencheDivLista();
+
   console.log(lista);
 });
