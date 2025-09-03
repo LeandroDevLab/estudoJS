@@ -9,6 +9,7 @@ class ContadorCalorias {
   init() {
     this.formulario.addEventListener('submit', e => {
       e.preventDefault();
+      this.verificaLocalStorage();
       this.addItem();
       this.formulario.reset();
       this.valoresTotais();
@@ -39,6 +40,7 @@ class ContadorCalorias {
         </p>`;
       this.divLista.appendChild(div);
     }
+    localStorage.setItem('listaRefeicao', JSON.stringify(this.lista));
     this.divLista.innerHTML += this.valoresTotais();
   }
 
@@ -67,6 +69,15 @@ class ContadorCalorias {
     Gordura: <span>${gorduraTotal}</span>g 
     </div>`;
   }
+
+  verificaLocalStorage() {
+    const listaDoLS = JSON.parse(localStorage.getItem('listaRefeicao'));
+    if (!listaDoLS) return;
+
+    this.lista = JSON.parse(localStorage.getItem('listaRefeicao'));
+    this.preencheDivLista();
+  }
 }
 
 const contador = new ContadorCalorias();
+contador.verificaLocalStorage();
