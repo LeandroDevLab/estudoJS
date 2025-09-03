@@ -26,6 +26,21 @@ body {
   border-radius: 10px;
 }
 
+.form {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}
+
+.form button {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+#kcal {
+  min-width: 100px;
+}
+
 form input,
 form label,
 form button {
