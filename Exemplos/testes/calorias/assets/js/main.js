@@ -24,6 +24,7 @@ function addItem() {
 }
 
 function preencheDivLista() {
+  divLista.innerHTML = '';
   for (item of lista) {
     let div = document.createElement('div');
     div.innerHTML = `<p>
