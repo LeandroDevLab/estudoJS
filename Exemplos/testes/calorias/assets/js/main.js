@@ -10,39 +10,62 @@ class ContadorCalorias {
     this.formulario.addEventListener('submit', e => {
       e.preventDefault();
       this.addItem();
-      this.preencheDivLista();
       this.formulario.reset();
+      this.valoresTotais();
     });
   }
 
   addItem() {
-    let kcal = this.formulario.querySelector('#kcal').value;
-    let carbo = this.formulario.querySelector('#carboidrato').value;
-    let proteina = this.formulario.querySelector('#proteina').value;
-    let gordura = this.formulario.querySelector('#gordura').value;
+    //Usando FormData
+    const formData = new FormData(this.formulario);
 
-    this.lista.push({
-      kcal,
-      carbo,
-      proteina,
-      gordura,
-    });
-    console.log(this.lista);
+    //transformando os dados em Objeto
+    const dados = Object.fromEntries(formData.entries());
+
+    this.lista.push(dados);
+
+    this.preencheDivLista();
   }
 
   preencheDivLista() {
     this.divLista.innerHTML = ``;
-    console.log('lista => ', this.lista.length);
     for (let i = 0; i < this.lista.length; i++) {
       let div = document.createElement('div');
       div.innerHTML = `<p>
         Kcal: ${this.lista[i].kcal} 
-        Carbo: ${this.lista[i].carbo} 
+        Carbo: ${this.lista[i].carboidrato} 
         Proteina: ${this.lista[i].proteina} 
         Gordura: ${this.lista[i].gordura} 
         </p>`;
       this.divLista.appendChild(div);
     }
+    this.divLista.innerHTML += this.valoresTotais();
+  }
+
+  valoresTotais() {
+    const kcalTotal = this.lista.reduce(
+      (ac, item) => ac + Number(item.kcal),
+      0
+    );
+    const carboidratoTotal = this.lista.reduce(
+      (ac, item) => ac + Number(item.carboidrato),
+      0
+    );
+    const proteinaTotal = this.lista.reduce(
+      (ac, item) => ac + Number(item.proteina),
+      0
+    );
+    const gorduraTotal = this.lista.reduce(
+      (ac, item) => ac + Number(item.gordura),
+      0
+    );
+
+    return `<div class="valoresTotais">
+    <span>Total: ${kcalTotal}</span>kcal;
+    Carboidrato: <span>${carboidratoTotal}</span>g;
+    Proteína: <span>${proteinaTotal}</span>g;
+    Gordura: <span>${gorduraTotal}</span>g 
+    </div>`;
   }
 }
 

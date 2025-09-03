@@ -26,7 +26,9 @@ body {
   border-radius: 10px;
 }
 
-form input, form label, form button {
+form input,
+form label,
+form button {
   display: block; /* cada um na sua linha */
   width: 100%; /* ocupando 100% da largura */
   margin-bottom: 10px;
@@ -57,3 +59,15 @@ form button:hover {
   background: var(--primary-color-darker);
 }
 
+.valoresTotais {
+  font-size: 0.9em;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 0;
+}
+
+.valoresTotais span {
+  font-weight: 900;
+}
